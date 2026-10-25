@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✨ AI-Powered Text Utilities</div>
+    <h1 class="hero-title">Text Processing<br><span class="gradient-text">Made Simple</span></h1>
+    <p class="hero-subtitle">
+      Detect and fix spelling mistakes, compress text files with custom Huffman coding,
+      and manage everything from a clean, powerful dashboard.
+    </p>
+    <div class="hero-actions">
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('dashboard.index') }}" class="btn btn-primary btn-lg">Go to Dashboard →</a>
+      {% else %}
+      <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Get Started Free</a>
+      <a href="{{ url_for('auth.login') }}" class="btn btn-outline btn-lg">Sign In</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card card-float">
+      <div class="mini-stat">
+        <span class="mini-icon">✅</span>
+        <div>
+          <div class="mini-label">Spell Checking</div>
+          <div class="mini-value">Real-time Detection</div>
+        </div>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-icon">🗜️</span>
+        <div>
+          <div class="mini-label">Compression</div>
+          <div class="mini-value">Huffman + zlib</div>
+        </div>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-icon">📊</span>
+        <div>
+          <div class="mini-label">Analytics</div>
+          <div class="mini-value">Full History</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section">
+  <div class="section-header">
+    <h2>Everything You Need</h2>
+    <p>Powerful text tools in one place</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Smart Spell Checker</h3>
+      <p>Highlights errors in-line, shows multiple correction suggestions with confidence scores, and auto-corrects your entire document.</p>
+      <ul class="feature-list">
+        <li>Real-time error highlighting</li>
+        <li>Multiple suggestions per word</li>
+        <li>One-click auto-correction</li>
+        <li>Upload .txt files</li>
+      </ul>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗜️</div>
+      <h3>File Compression</h3>
+      <p>Reduce file sizes using a custom Huffman coding implementation and zlib. Track savings and download compressed/decompressed results.</p>
+      <ul class="feature-list">
+        <li>Huffman &amp; zlib algorithms</li>
+        <li>Compression ratio display</li>
+        <li>Storage savings metrics</li>
+        <li>One-click decompression</li>
+      </ul>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Analytics &amp; History</h3>
+      <p>Every operation is recorded. Browse your full history, download PDF reports, and track your productivity statistics.</p>
+      <ul class="feature-list">
+        <li>Full operation history</li>
+        <li>PDF report generation</li>
+        <li>Usage statistics</li>
+        <li>Per-session details</li>
+      </ul>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Secure &amp; Private</h3>
+      <p>Your data stays yours. CSRF protection, hashed passwords, secure sessions, and role-based access control keep your account safe.</p>
+      <ul class="feature-list">
+        <li>CSRF protection</li>
+        <li>Password hashing (bcrypt)</li>
+        <li>Secure file uploads</li>
+        <li>Role-based access</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+{% if not current_user.is_authenticated %}
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to get started?</h2>
+    <p>Create a free account and start processing text in seconds.</p>
+    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Create Free Account</a>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
